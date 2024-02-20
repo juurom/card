@@ -5,7 +5,7 @@
 	let cnt = data.heartcount;
     const incrementHeartCount = async () => {
         try {
-            const response = await fetch('http://localhost:5173/api', {
+            const response = await fetch('/api', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
