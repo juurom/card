@@ -1,26 +1,34 @@
-<svelte:head>
-	<title>About</title>
-	<meta name="description" content="About this app" />
-</svelte:head>
+<script>
+    export let data;
+    console.log(data.skills)
 
-<div class="text-column">
-	<h1>About this app</h1>
+</script>
 
-	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
-	</p>
-
-	<pre>npm create svelte@latest</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
-
-	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
-	</p>
+<div>
+    <div>
+        name: {data.name}
+    </div>
+    <div>
+        birth: {data.birth}
+    </div>
+    <div>
+        bio: {data.bio}
+    </div>
+    <div>
+        skills:
+        {#each data.skills as skill}
+            <div>{skill.skillname} </div>
+            {#each Array.from({ length: skill.skillstat }) as _, index}
+                <div id="statblock"></div>
+            {/each}
+        {/each}
+    </div>
 </div>
+
+<style>
+	#statblock{
+        display: inline-block;
+        width: 10px; height: 10px;
+		background-color: rgb(0,0,0);
+	}
+</style>
